@@ -272,6 +272,18 @@ public:
 	 *  	   format.
 	 */
 	void ca_path(const string& path);
+	/**
+	 * Check if certificate is revoked. If the certificate is revoked or the
+	 * OCSP request fails, no connection is established
+	 * @return Whether it will carry out revocation checks.
+	 */
+	bool get_revocation_check() const { return to_bool(opts_.check_revocation); }
+	/**
+	 * Check if certificate is revoked. If the certificate is revoked or the
+	 * OCSP request fails, no connection is established
+	 * @param v Whether it should carry out revocation checks.
+	 */
+	void set_revocation_check(bool v) { opts_.check_revocation = to_int(v); }
 };
 
 /**
